@@ -45,13 +45,16 @@ function updateTimer(selectedDate) {
 
 
   const timeComponents = convertMs(timeDifference);
-  
+    if (timeDifference <= 0) {
+    clearInterval(countdownInterval);
+    return;
+  }
+
   daysValue.textContent = addLeadingZero(timeComponents.days);
   hoursValue.textContent = addLeadingZero(timeComponents.hours);
   minutesValue.textContent = addLeadingZero(timeComponents.minutes);
   secondsValue.textContent = addLeadingZero(timeComponents.seconds);
 }
-
 
 
 function convertMs(ms) {
