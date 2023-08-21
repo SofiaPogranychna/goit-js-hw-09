@@ -13,7 +13,7 @@ const formEl = document.querySelector('.form');
   let delay = delayInput;
 
       for (let i = 1; i <= amountInput; i++) {
-        position = i;
+       let  position = i;
         
 createPromise(position, delay)
         .then(({position, delay}) => {
