@@ -9,6 +9,7 @@ const minutesValue = document.querySelector("[data-minutes]");
 const secondsValue = document.querySelector("[data-seconds]");
 const currentDate = new Date();
 
+let countdownInterval = null;
 function isFutureDate(chosenDate) { 
   return chosenDate > currentDate;
 }
@@ -34,7 +35,7 @@ flatpickr(dateTimePicker, options);
 startButton.addEventListener("click", () => {
   const selectedDate = new Date(dateTimePicker.value).getTime();
 
-  countdownInterval = setInterval(() => {
+   countdownInterval = setInterval(() => {
     updateTimer(selectedDate);
   }, 1000);
 
@@ -42,8 +43,6 @@ startButton.addEventListener("click", () => {
 
 function updateTimer(selectedDate) {
   const  timeDifference = selectedDate - new Date();
-
-
   const timeComponents = convertMs(timeDifference);
     if (timeDifference <= 0) {
     clearInterval(countdownInterval);
